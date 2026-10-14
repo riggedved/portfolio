@@ -325,6 +325,7 @@ body:has(.pdf-book-page) {
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
 }
 
 .nav-indicator {

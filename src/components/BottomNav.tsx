@@ -6,7 +6,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const navItems = [
-    { name: "dev", path: "/dev" },
+    { name: "dev projects", path: "/dev" },
     { name: "films", path: "/film" },
     { name: "art", path: "/art" },
     { name: "blogs", path: "/blogs" },

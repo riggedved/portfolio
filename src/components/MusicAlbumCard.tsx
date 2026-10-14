@@ -1,0 +1,74 @@
+"use client";
+
+import Link from "next/link";
+import CoverImage from "@/components/CoverImage";
+import MusicExplicitBadge from "@/components/MusicExplicitBadge";
+
+export type MusicAlbumPreview = {
+  id: string;
+  slug: string;
+  title: string;
+  genre?: string;
+  year?: number;
+  explicit?: boolean;
+  artworkUrl: string;
+  artworkThumbUrl?: string;
+};
+
+function formatAlbumMeta(genre?: string, year?: number) {
+  return [genre, year?.toString()].filter(Boolean).join(" · ");
+}
+
+type MusicAlbumCardProps = {
+  album: MusicAlbumPreview;
+  priority?: boolean;
+};
+
+export default function MusicAlbumCard({
+  album,
+  priority = false,
+}: MusicAlbumCardProps) {
+  const labelUrl = album.artworkThumbUrl || album.artworkUrl;
+
+  return (
+    <article className="music-album-item">
+      <p className="art-card-heading">music</p>
+      <Link
+        href={`/art/music/${album.slug}`}
+        className="music-vinyl-stage"
+        aria-label={`Open ${album.title}`}
+      >
+        <div className="music-vinyl-disc" aria-hidden>
+          <div className="music-vinyl-disc-inner">
+            <div
+              className="music-vinyl-label"
+              style={{ backgroundImage: `url(${labelUrl})` }}
+            />
+          </div>
+        </div>
+
+        <div className="music-sleeve">
+          <CoverImage
+            src={album.artworkUrl}
+            alt={`${album.title} artwork`}
+            priority={priority}
+          />
+        </div>
+      </Link>
+
+      <div className="music-album-info">
+        <div className="music-album-title-row">
+          <Link href={`/art/music/${album.slug}`} className="music-album-title-link">
+            <h3 className="music-album-title">{album.title}</h3>
+          </Link>
+          {album.explicit && <MusicExplicitBadge size="sm" />}
+        </div>
+        {formatAlbumMeta(album.genre, album.year) && (
+          <p className="music-album-meta">
+            {formatAlbumMeta(album.genre, album.year)}
+          </p>
+        )}
+      </div>
+    </article>
+  );
+}

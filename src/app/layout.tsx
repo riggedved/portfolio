@@ -63,6 +63,10 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [ogImageUrl],
       ...(meta.twitterHandle && { creator: `@${meta.twitterHandle.replace(/^@/, "")}` }),
     },
+    icons: {
+      icon: "/avatar.png",
+      apple: "/avatar.png",
+    },
   };
 }
 

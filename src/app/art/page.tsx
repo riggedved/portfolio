@@ -1,6 +1,7 @@
 import { client } from "../../sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { BlurredStagger } from "@/components/ui/blurred-stagger-text";
 
 export const dynamic = "force-dynamic";
 
@@ -142,6 +143,14 @@ export default async function ArtPage() {
         }
       `}</style>
 
+      {/* Page Title & Subtitle matching dev, films, and blogs */}
+      <div className="project-page-header">
+        <h1 className="project-page-title">
+          <BlurredStagger text="art" animateOnce />
+        </h1>
+        <p className="project-page-subtitle">some things i have worked real hard on.</p>
+      </div>
+
       {/* Centered Instagram Profile Header */}
       <div
         className="art-profile-header"
@@ -151,7 +160,7 @@ export default async function ArtPage() {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          margin: "1.5rem auto 2.5rem auto",
+          margin: "0 auto 2.5rem auto",
           gap: "14px",
         }}
       >
@@ -184,7 +193,7 @@ export default async function ArtPage() {
         </div>
 
         {/* Handle below is the clickable link to the Instagram page */}
-        <h1 className="art-profile-handle-wrap" style={{ margin: 0, fontSize: "1.1rem", fontWeight: 400, lineHeight: 1.4 }}>
+        <div className="art-profile-handle-wrap" style={{ margin: 0, fontSize: "1.1rem", fontWeight: 400, lineHeight: 1.4 }}>
           <a
             href={instagramUrl}
             target="_blank"
@@ -241,7 +250,7 @@ export default async function ArtPage() {
               <polyline points="7 7 17 7 17 17"></polyline>
             </svg>
           </a>
-        </h1>
+        </div>
       </div>
 
       {/* Photos Grid */}

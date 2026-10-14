@@ -30,7 +30,7 @@ export default async function Contact() {
                     <InteractiveAvatar priority={true} />
                 </div>
 
-                <h1 className="contact-title"><BlurredStagger text="get in touch" /></h1>
+                <h1 className="contact-title"><BlurredStagger text="touch me" /></h1>
 
                 <div className="contact-description">
                     <p>

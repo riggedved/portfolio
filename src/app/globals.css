@@ -282,7 +282,8 @@ nav {
   flex-direction: column;
 }
 
-.content-area:has(.art-page) {
+.content-area:has(.art-page),
+.content-area:has(.project-page-container) {
   max-width: 960px;
 }
 
@@ -1149,7 +1150,7 @@ body:has(.gallery-intro-page) .bottom-vignette {
 .project-list-tech-stack {
   font-size: 1.08rem;
   font-weight: 450;
-  color: var(--text-secondary);
+  color: #ffffff !important;
   line-height: 1.4;
   margin: 0;
 }
@@ -1159,6 +1160,7 @@ body:has(.gallery-intro-page) .bottom-vignette {
   color: var(--text-secondary);
   line-height: 1.5;
   margin: 0;
+  white-space: pre-line;
 }
 
 @media (max-width: 768px) {

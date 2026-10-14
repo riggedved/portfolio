@@ -11,7 +11,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function DevPage() {
     const data = await client.fetch(`*[_type == "devProject"] | order(coalesce(rank, 999999) asc, _createdAt asc){
-        _id, title, techStack, description, image, link
+        _id, title, techStack, description, image, link, github
     }`);
 
     const devProjects = data.map((project: any) => ({
@@ -21,6 +21,7 @@ export default async function DevPage() {
         description: project.description,
         imageUrl: project.image ? urlFor(project.image).width(600).url() : undefined,
         link: project.link,
+        githubUrl: project.github,
     }));
 
     return (

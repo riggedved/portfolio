@@ -237,14 +237,15 @@ export default async function ArtPage() {
             </span>
             <svg
               className="art-profile-handle-arrow"
-              width="14"
-              height="14"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2"
+              strokeWidth="2.2"
               strokeLinecap="round"
               strokeLinejoin="round"
+              style={{ display: "inline-block", flexShrink: 0 }}
             >
               <line x1="7" y1="17" x2="17" y2="7"></line>
               <polyline points="7 7 17 7 17 17"></polyline>

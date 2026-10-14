@@ -41,5 +41,11 @@ export const devProjectType = defineType({
             title: 'Project Link',
             type: 'url',
         }),
+        defineField({
+            name: 'github',
+            title: 'GitHub Repository URL',
+            type: 'url',
+            description: 'Link to GitHub repo (e.g. https://github.com/username/project)',
+        }),
     ],
 });

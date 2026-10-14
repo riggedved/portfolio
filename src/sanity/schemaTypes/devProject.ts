@@ -19,6 +19,12 @@ export const devProjectType = defineType({
             validation: (rule) => rule.required(),
         }),
         defineField({
+            name: 'techStack',
+            title: 'Tech Stack',
+            type: 'string',
+            description: 'e.g. Python, FastAPI, Redis, Postgres, AWS EC2',
+        }),
+        defineField({
             name: 'description',
             title: 'Description',
             type: 'text',

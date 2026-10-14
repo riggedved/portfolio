@@ -206,6 +206,8 @@ export default function HighlightsSection({
                           overflow: "hidden",
                           textOverflow: "ellipsis",
                           whiteSpace: "nowrap",
+                          textAlign: "center",
+                          width: "100%",
                         }}
                       >
                         {project.title}

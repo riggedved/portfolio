@@ -5,6 +5,7 @@ import { BlurredStagger } from './ui/blurred-stagger-text';
 interface Project {
     id: string;
     title: string;
+    techStack?: string;
     description?: string;
     imageUrl?: string;
     link?: string;
@@ -48,6 +49,7 @@ export default function ProjectPageTemplate({ title, subtitle, projects, childre
                                 </div>
                                 <div className="project-list-info">
                                     <h3 className="project-list-title">{project.title}</h3>
+                                    {project.techStack && <p className="project-list-tech-stack">{project.techStack}</p>}
                                     {project.description && <p className="project-list-description">{project.description}</p>}
                                 </div>
                             </div>

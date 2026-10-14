@@ -21,7 +21,7 @@ export const structure: StructureResolver = (S) =>
           S.list()
             .title('Art')
             .items([
-              S.documentTypeListItem('art').title('Art Projects (image / video)'),
+              S.documentTypeListItem('art').title('Photos & Art'),
               S.documentTypeListItem('artGallery').title('Art Galleries (3D Rooms)'),
               S.documentTypeListItem('pdfBook').title('PDF Books'),
               S.documentTypeListItem('music').title('Music Albums'),

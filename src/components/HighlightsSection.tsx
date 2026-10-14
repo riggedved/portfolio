@@ -15,6 +15,7 @@ function urlFor(source: any) {
 export interface Highlight {
   _id: string;
   title: string;
+  rank?: number;
   mediaType: "image" | "video";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image?: any;

@@ -12,6 +12,12 @@ export const highlightType = defineType({
             validation: (rule) => rule.required(),
         }),
         defineField({
+            name: 'rank',
+            title: 'Rank / Order',
+            type: 'number',
+            description: 'Rank for ordering highlights (e.g. 1 for first, 2 for second, etc.)',
+        }),
+        defineField({
             name: 'mediaType',
             title: 'Media Type',
             type: 'string',
@@ -55,4 +61,18 @@ export const highlightType = defineType({
             description: 'URL to open when the highlight is clicked',
         }),
     ],
+    preview: {
+        select: {
+            title: 'title',
+            rank: 'rank',
+            media: 'image',
+        },
+        prepare(selection) {
+            const { title, rank, media } = selection;
+            return {
+                title: rank !== undefined && rank !== null ? `#${rank} - ${title}` : title,
+                media,
+            };
+        },
+    },
 });

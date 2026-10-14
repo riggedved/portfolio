@@ -9,9 +9,10 @@ export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const [highlights, experiences, skills, education] = await Promise.all([
-    client.fetch(`*[_type == "highlight"] | order(_createdAt desc){
+    client.fetch(`*[_type == "highlight"] | order(coalesce(rank, order, 999999) asc, _createdAt desc){
       _id,
       title,
+      rank,
       mediaType,
       image,
       videoUrl,

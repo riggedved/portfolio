@@ -2,51 +2,63 @@ import { defineField, defineType } from 'sanity';
 
 export const artType = defineType({
     name: 'art',
-    title: 'Art',
+    title: 'Photos & Art',
     type: 'document',
     fields: [
         defineField({
             name: 'title',
-            title: 'Title',
+            title: 'Title / Caption (Optional)',
             type: 'string',
-            validation: (rule) => rule.required(),
-        }),
-        defineField({
-            name: 'mediaType',
-            title: 'Media Type',
-            type: 'string',
-            options: {
-                list: [
-                    { title: 'Image', value: 'image' },
-                    { title: 'Video', value: 'video' },
-                ],
-                layout: 'radio',
-            },
-            validation: (rule) => rule.required(),
+            description: 'Optional caption or title. Leave blank if you only want the photo without text.',
         }),
         defineField({
             name: 'image',
-            title: 'Image',
+            title: 'Photo / Image',
             type: 'image',
             options: { hotspot: true },
-            hidden: ({ document }) => document?.mediaType !== 'image',
+            validation: (rule) => rule.required(),
         }),
         defineField({
-            name: 'videoUrl',
-            title: 'Video URL (e.g. YouTube/Vimeo)',
+            name: 'instagramPostUrl',
+            title: 'Instagram Post URL (optional)',
             type: 'url',
-            description: 'Provide an external video URL',
-            hidden: ({ document }) => document?.mediaType !== 'video',
+            description: 'Direct link to this post on Instagram',
         }),
         defineField({
-            name: 'videoFile',
-            title: 'Video File',
-            type: 'file',
-            description: 'Upload an mp4 file if not using a URL',
+            name: 'aspectRatio',
+            title: 'Display Aspect Ratio',
+            type: 'string',
+            description: 'Natural/Auto displays original photo dimensions according to their sizes (Pinterest style).',
             options: {
-                accept: 'video/mp4',
+                list: [
+                    { title: 'Natural / Auto (Pinterest Style)', value: 'auto' },
+                    { title: 'Square (1:1)', value: 'square' },
+                    { title: 'Circle (1:1 Rounded)', value: 'circle' },
+                    { title: 'Portrait (4:5 Crop)', value: 'portrait' },
+                    { title: 'Landscape (16:9 Crop)', value: 'landscape' },
+                ],
+                layout: 'radio',
             },
-            hidden: ({ document }) => document?.mediaType !== 'video',
+            initialValue: 'auto',
+        }),
+        defineField({
+            name: 'order',
+            title: 'Display Order',
+            type: 'number',
+            description: 'Lower numbers appear first',
         }),
     ],
+    preview: {
+        select: {
+            title: 'title',
+            media: 'image',
+        },
+        prepare(selection) {
+            const { title, media } = selection;
+            return {
+                title: title || 'Photo (No Title)',
+                media,
+            };
+        },
+    },
 });

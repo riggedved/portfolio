@@ -79,6 +79,28 @@ export const siteSettingsType = defineType({
             type: 'url',
             group: 'content',
         }),
+        defineField({
+            name: 'instagramProfileImage',
+            title: 'Instagram Profile Photo (Art Page)',
+            type: 'image',
+            options: { hotspot: true },
+            description: 'The circular profile photo displayed at the top of the Art page. Defaults to avatar if not uploaded.',
+            group: 'content',
+        }),
+        defineField({
+            name: 'instagram',
+            title: 'Instagram URL',
+            type: 'url',
+            description: 'Link to your Instagram profile (e.g. https://instagram.com/yourhandle)',
+            group: 'content',
+        }),
+        defineField({
+            name: 'instagramHandle',
+            title: 'Instagram Handle',
+            type: 'string',
+            description: 'e.g. riggedved or @riggedved',
+            group: 'content',
+        }),
         // SEO & Metadata
         defineField({
             name: 'siteTitle',

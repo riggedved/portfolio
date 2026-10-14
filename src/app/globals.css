@@ -917,6 +917,18 @@ body:has(.gallery-intro-page) .bottom-vignette {
   margin: 0;
 }
 
+.problem-solving-handle-link {
+  transition: opacity 0.2s ease;
+}
+
+.problem-solving-handle-link:hover {
+  opacity: 0.75;
+}
+
+.problem-solving-handle-link:hover .handle-arrow-icon {
+  transform: translate(2px, -2px);
+}
+
 .skill-pills {
   display: flex;
   flex-wrap: wrap;
@@ -4584,6 +4596,13 @@ body:has(.gallery-intro--inside) .bottom-capsule {
   font-size: 1.1rem;
   letter-spacing: normal;
   font-family: inherit;
+}
+
+.art-profile-handle-insta-icon {
+  color: #ffffff;
+  stroke: #ffffff;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
 }
 
 .art-profile-handle-arrow {

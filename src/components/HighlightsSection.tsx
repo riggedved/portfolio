@@ -132,55 +132,84 @@ export default function HighlightsSection({
                 >
                   <a
                     href={project.link || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-card"
+                    target={project.link ? "_blank" : undefined}
+                    rel={project.link ? "noopener noreferrer" : undefined}
+                    className="highlight-card-link"
                     style={{
-                      display: "block",
+                      display: "flex",
+                      flexDirection: "column",
                       textDecoration: "none",
-                      overflow: "hidden",
-                      position: "relative",
+                      color: "inherit",
+                      cursor: project.link ? "pointer" : "default",
+                      width: "100%",
                     }}
                   >
-                    {project.mediaType === "image" && project.image && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={urlFor(project.image).width(640).auto("format").quality(72).url()}
-                        alt={project.title}
+                    <div
+                      className="project-card"
+                      style={{
+                        display: "block",
+                        overflow: "hidden",
+                        position: "relative",
+                      }}
+                    >
+                      {project.mediaType === "image" && project.image && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={urlFor(project.image).width(640).auto("format").quality(72).url()}
+                          alt={project.title}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            borderRadius: "inherit",
+                          }}
+                        />
+                      )}
+                      {project.mediaType === "video" && project.videoFile?.asset?.url && (
+                        <video
+                          src={project.videoFile.asset.url}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            borderRadius: "inherit",
+                          }}
+                        />
+                      )}
+                      {project.mediaType === "video" && project.videoUrl && !project.videoFile && (
+                        <iframe
+                          src={project.videoUrl}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            border: "none",
+                            borderRadius: "inherit",
+                            pointerEvents: "none",
+                          }}
+                        />
+                      )}
+                    </div>
+                    {project.title && (
+                      <p
+                        className="highlight-card-title"
                         style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          borderRadius: "inherit",
+                          margin: "10px 0 0 0",
+                          fontSize: "0.95rem",
+                          fontWeight: 500,
+                          color: "var(--text-primary)",
+                          letterSpacing: "-0.01em",
+                          lineHeight: 1.3,
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          whiteSpace: "nowrap",
                         }}
-                      />
-                    )}
-                    {project.mediaType === "video" && project.videoFile?.asset?.url && (
-                      <video
-                        src={project.videoFile.asset.url}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          borderRadius: "inherit",
-                        }}
-                      />
-                    )}
-                    {project.mediaType === "video" && project.videoUrl && !project.videoFile && (
-                      <iframe
-                        src={project.videoUrl}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          border: "none",
-                          borderRadius: "inherit",
-                          pointerEvents: "none",
-                        }}
-                      />
+                      >
+                        {project.title}
+                      </p>
                     )}
                   </a>
                 </div>
